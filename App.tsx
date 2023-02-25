@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
+import React from 'react';
+import { SafeAreaView, StatusBar } from 'react-native';
+import AppRotes from './src/rotes/AppRotes';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App: React.FC = () => {
+	const [fontsLoaded] = useFonts({
+		'Inter-Bold': require('./src/assets/fonts/Inter-Bold.ttf'),
+		'Inter-SemiBold': require('./src/assets/fonts/Inter-SemiBold.ttf'),
+		'Inter-Regular': require('./src/assets/fonts/Inter-Regular.ttf'),
+	});
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	if (!fontsLoaded) {
+		return null;
+	}
+
+	return (
+		<SafeAreaView style={{ flex: 1 }}>
+			<StatusBar
+				translucent={true}
+				barStyle={'dark-content'}
+				backgroundColor='#00000000'
+			/>
+			<NavigationContainer>
+				<AppRotes />
+			</NavigationContainer>
+		</SafeAreaView>
+	);
+};
+
+export default App;
