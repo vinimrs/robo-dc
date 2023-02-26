@@ -1,0 +1,31 @@
+name: 'CI: Main WorkFlow'
+
+env:
+  ENV_FILE: ${{ secrets.ENV_FILE }}
+
+on:
+  push:
+    branches: ['main', 'develop']
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run installation
+        run: npm i --force
+      - name: Create a env file
+        run: |
+          echo ${{ secrets.ENV_FILE }} > .env
+      - name: Run check
+        run: npm run test
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run installation
+        run: npm i --force
+      - name: Run linter
+        run: npm run lint:fix

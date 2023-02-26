@@ -36,16 +36,16 @@ describe('Dado que o usuário está na página inicial', () => {
       </NavigationContainer>
     );
 
-    const { getAllByAccessibilityHint, getByAccessibilityHint } =
-      render(component);
+    const { getAllByAccessibilityHint, getByText } = render(component);
 
     const items = getAllByAccessibilityHint('Usuário');
     const title = items[0].find(el => el.props.testID === 'titulo').props
       .children;
 
     fireEvent(items[0], 'press');
-    const newHeader = getByAccessibilityHint('Usuário');
+    console.log(getAllByAccessibilityHint('Usuário'));
+    const newHeader = getByText(title.toLowerCase());
 
-    expect(newHeader.children[0]).toBe(title.toLowerCase());
+    expect(newHeader.props.children).toBe(title.toLowerCase());
   });
 });
