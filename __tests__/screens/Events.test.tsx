@@ -36,7 +36,7 @@ describe('Dado que o usuário está na página de eventos', () => {
     );
     render(component);
 
-    await act(async () => {
+    act(async () => {
       await waitFor(() => {
         expect(eventServices.getNEvents).toHaveBeenCalledTimes(1);
         const list = screen.getByAccessibilityHint('Lista de eventos');
@@ -58,7 +58,7 @@ describe('Dado que o usuário está na página de eventos', () => {
     );
     render(component);
 
-    await act(async () => {
+    act(async () => {
       await waitFor(() => {
         expect(eventServices.getNEvents).toHaveBeenCalled();
 
@@ -81,7 +81,7 @@ describe('Dado que o usuário está na página de eventos', () => {
     );
     render(component);
 
-    await act(async () => {
+    act(async () => {
       await waitFor(() => {
         expect(eventServices.getNEvents).toHaveBeenCalled();
 
@@ -110,7 +110,7 @@ describe('Dado que o usuário está na página de eventos', () => {
     );
     render(component);
 
-    await act(async () => {
+    act(async () => {
       await waitFor(() => {
         expect(eventServices.getNEvents).toHaveBeenCalled();
 
@@ -131,26 +131,26 @@ describe('Dado que o usuário está na página de eventos', () => {
         <AppRotes initialScreen="Events" />
       </NavigationContainer>
     );
-    render(component);
+    const { getByAccessibilityHint } = render(component);
 
-    await act(async () => {
+    act(async () => {
       await waitFor(() => {
         expect(eventServices.getNEvents).toHaveBeenCalled();
 
-        const list = screen.getByAccessibilityHint('Lista de filtros');
+        const list = getByAccessibilityHint('Lista de filtros');
         const { getAllByAccessibilityHint } = within(list);
         const items = getAllByAccessibilityHint('Filtro');
 
         expect(items.length).toBeGreaterThan(1);
 
-        const botao = screen.getByAccessibilityHint('Botão de filtro');
+        const botao = getByAccessibilityHint('Botão de filtro');
 
         const filtro = items[0].find(el => el.props.testID === 'filtro').props
           .accessibilityHint;
         fireEvent(items[0], 'press');
         fireEvent(botao, 'press');
 
-        const listEvents = screen.getByAccessibilityHint('Lista de eventos');
+        const listEvents = getByAccessibilityHint('Lista de eventos');
         const { getAllByAccessibilityHint: getAllByHint } = within(listEvents);
         const itemsEvents = getAllByHint('Evento');
 
