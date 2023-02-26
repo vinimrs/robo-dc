@@ -43,7 +43,6 @@ describe('Dado que o usuário está na página inicial', () => {
       .children;
 
     fireEvent(items[0], 'press');
-    console.log(getAllByAccessibilityHint('Usuário'));
     const newHeader = getByText(title.toLowerCase());
 
     expect(newHeader.props.children).toBe(title.toLowerCase());
