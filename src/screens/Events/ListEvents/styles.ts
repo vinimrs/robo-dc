@@ -9,6 +9,6 @@ export const style = StyleSheet.create({
   },
   list: {
     marginTop: 120,
-    marginBottom: 110,
+    marginBottom: 70,
   },
 });

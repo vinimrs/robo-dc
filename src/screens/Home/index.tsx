@@ -6,11 +6,10 @@ import Layout from '../../components/Layout';
 import { mockUsers } from '../../common/mocks';
 import List from '../../components/Lists/UsersList';
 import { StackParamsList } from '../../rotes/AppRotes';
-// import { View } from 'react-native';
 import Header from './Header';
 import Footer from '../../components/Layout/Footer';
 import ContentTitle from './ContentTitle';
-import { ContentContainer } from './ContentContainer';
+import { ContentContainer } from './styles';
 
 const Home: React.FC = () => {
   const navigation =

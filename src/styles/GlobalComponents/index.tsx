@@ -8,10 +8,10 @@ export const Container = styled.View<{ larger?: boolean }>`
   flex: 1;
   justify-content: space-between;
   align-items: center;
-  width: ${({ larger }) => (larger ? Dimensions.get('window').width : '876px')};
-  max-width: ${({ larger }) => (larger ? '1280px' : '876px')};
+  min-width: ${({ larger }) =>
+    larger ? `${Dimensions.get('window').height}px` : '876px'};
   height: ${({ larger }) =>
-    larger ? Dimensions.get('window').height : '100%'};
+    larger ? `${Dimensions.get('window').height}px` : '100%'};
   margin: 0 auto;
   background-color: ${({ larger }) =>
     larger ? 'rgba(8, 217, 214, 0.2)' : '#00000000'};
@@ -19,7 +19,7 @@ export const Container = styled.View<{ larger?: boolean }>`
 
 export const HeaderContainer = styled.View<{ larger?: boolean }>`
   width: ${({ larger }) =>
-    larger ? Dimensions.get('window').width + 'px' : '876px'};
+    larger ? `${Dimensions.get('window').width}px` : '876px'};
   height: 56px;
   flex-direction: row;
   justify-content: space-between;

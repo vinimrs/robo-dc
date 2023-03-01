@@ -1,9 +1,6 @@
 import React from 'react';
 import { Container } from '../../styles/GlobalComponents';
 import { Content } from './styles';
-// import Footer from './Footer';
-// import Header from './Header';
-// import { Container } from './styles';
 
 const Layout: React.FC<
   React.PropsWithChildren<{
@@ -11,7 +8,7 @@ const Layout: React.FC<
     Footer: React.ComponentType;
     larger?: boolean;
   }>
-> = ({ children, Header, Footer, larger }) => {
+> = ({ children, Header, Footer, larger = false }) => {
   return (
     <Container larger={larger}>
       <Header />

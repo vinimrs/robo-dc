@@ -13,11 +13,7 @@
     "lint:fix": "npm run eslint:fix && npm run type-check",
     "eslint": "eslint src/**/*.{ts,tsx}",
     "eslint:fix": "eslint src/**/*.{ts,tsx} --fix",
-    "type-check": "tsc --noEmit",
-    "eas-build-pre-install": "npm install --save --force",
-    "eas-build-post-install": "npm install --save --force",
-    "eas-build-on-success": "echo bbbbbbbb",
-    "eas-build-on-error": "echo aaaaaaaa"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@react-native-community/cli": "^10.2.0",
