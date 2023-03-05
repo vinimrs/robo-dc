@@ -9,7 +9,7 @@ import { style } from './styles';
 const List: React.FC<{
   accessibilityHintList: string;
   accessibilityHintItem: string;
-  data: { name: string; src: any; id: string; route: 'Events' }[];
+  data: { name: string; src: any; id: string; route: 'Events' | 'Explore' }[];
   navigation: NativeStackNavigationProp<StackParamsList>;
   // headerTitle: string;
 }> = ({

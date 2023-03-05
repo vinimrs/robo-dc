@@ -146,16 +146,12 @@ export const mockEvents = [
 export const mockFeatures: {
   name: string;
   id: string;
-  route: 'Events';
+  route: 'Events' | 'Explore';
 }[] = [
   // { name: 'Mapa do DC', route: 'Map', id: '1' },
   // { name: 'Passeio', route: 'Tour', id: '2' },
   { name: 'Eventos', route: 'Events', id: '3' },
-  { name: 'Eventos', route: 'Events', id: '4' },
-  { name: 'Eventos', route: 'Events', id: '5' },
-  { name: 'Eventos', route: 'Events', id: '6' },
-  { name: 'Eventos', route: 'Events', id: '7' },
-  { name: 'Eventos', route: 'Events', id: '8' },
+  { name: 'Explorar', route: 'Explore', id: '4' },
   // { name: 'Curiosidades', route: 'Curiosity', id: '4' },
 ];
 

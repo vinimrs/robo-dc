@@ -27,6 +27,7 @@ export const HeaderContainer = styled.View<{ larger?: boolean }>`
   padding-top: 16px;
   padding-left: 16px;
   padding-right: 16px;
+  /* padding-bottom: 16px; */
   margin-top: 20px;
   position: absolute;
   z-index: 100;
@@ -37,7 +38,7 @@ export const TitleHeadline = styled.Text`
   font-family: 'Inter-Bold';
   font-size: 40px;
   font-weight: 700;
-  line-height: 48px;
+  line-height: 41px;
   letter-spacing: -1.3px;
   text-align: center;
 `;
@@ -47,7 +48,6 @@ export const TitleSubheadline = styled.Text`
   font-family: 'Inter-Bold';
   font-size: 32px;
   font-weight: 700;
-  /* line-height: 48px; */
   letter-spacing: -1px;
   text-align: center;
 `;

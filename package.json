@@ -9,6 +9,7 @@
     "web": "expo start --web",
     "test": "jest",
     "test:watch": "jest --watchAll",
+    "test:watch-silent": "jest --watchAll --silent",
     "lint": "npm run eslint && npm run type-check",
     "lint:fix": "npm run eslint:fix && npm run type-check",
     "eslint": "eslint src/**/*.{ts,tsx}",

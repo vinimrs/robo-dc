@@ -3,20 +3,29 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 import Features from '../screens/Features';
 import Events from '../screens/Events';
-import { EventI } from '@types';
+import { EventI, PointI, Routes } from '@types';
 import Event from '../screens/Event';
+import Explore from '../screens/Explore';
+import Point from '../screens/Point';
+import Movement from '../screens/Movement';
+import { points } from '@constants';
+import Moving from '../screens/Movement/Moving';
 
 export type StackParamsList = {
   Home: undefined;
   Features: { userRole: string } | undefined;
   Events: undefined;
   Event: { event: EventI } | undefined;
+  Explore: undefined;
+  Point: { point: PointI } | undefined;
+  Movement: { point: PointI } | undefined;
+  Moving: { point: PointI } | undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParamsList>();
 
 const AppRotes: React.FC<{
-  initialScreen?: 'Home' | 'Features' | 'Events' | 'Event';
+  initialScreen?: Routes;
 }> = ({ initialScreen = 'Home' }) => {
   return (
     <Stack.Navigator
@@ -26,6 +35,22 @@ const AppRotes: React.FC<{
       <Stack.Screen name="Features" component={Features} />
       <Stack.Screen name="Events" component={Events} />
       <Stack.Screen name="Event" component={Event} />
+      <Stack.Screen name="Explore" component={Explore} />
+      <Stack.Screen
+        name="Point"
+        component={Point}
+        initialParams={{ point: points[0] }}
+      />
+      <Stack.Screen
+        name="Movement"
+        component={Movement}
+        initialParams={{ point: points[0] }}
+      />
+      <Stack.Screen
+        name="Moving"
+        component={Moving}
+        initialParams={{ point: points[0] }}
+      />
     </Stack.Navigator>
   );
 };

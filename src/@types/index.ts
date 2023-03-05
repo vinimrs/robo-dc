@@ -24,3 +24,40 @@ export interface HttpClientReturn {
   body: any;
   headers: Headers;
 }
+
+export type Routes =
+  | 'Home'
+  | 'Features'
+  | 'Events'
+  | 'Event'
+  | 'Explore'
+  | 'Point'
+  | 'Movement'
+  | 'Moving';
+
+export type Points =
+  | 'LE-1'
+  | 'LE-2'
+  | 'LE-3'
+  | 'LE-4'
+  | 'Suporte'
+  | 'PPG-CC4'
+  | 'Maker'
+  | 'LE-5'
+  | 'Auditorio'
+  | 'Banheiros'
+  | 'Copa'
+  | 'Lig'
+  | 'Reunioes'
+  | 'Chefia'
+  | 'Graduacao'
+  | 'Recepcao'
+  | 'Home';
+
+export interface PointI {
+  id: number;
+  name: Points;
+  slug: string;
+  description: string;
+  image: ImageSourcePropType;
+}

@@ -35,16 +35,14 @@ describe('Dado que o usuário está na página de eventos', () => {
       </NavigationContainer>
     );
     render(component);
+    expect(eventServices.getNEvents).toHaveBeenCalledTimes(1);
 
-    act(async () => {
-      await waitFor(() => {
-        expect(eventServices.getNEvents).toHaveBeenCalledTimes(1);
-        const list = screen.getByAccessibilityHint('Lista de eventos');
-        const { getAllByAccessibilityHint } = within(list);
-        const items = getAllByAccessibilityHint('Evento');
+    await waitFor(() => {
+      const list = screen.getByAccessibilityHint('Lista de eventos');
+      const { getAllByAccessibilityHint } = within(list);
+      const items = getAllByAccessibilityHint('Evento');
 
-        expect(items.length).toBeGreaterThan(9);
-      });
+      expect(items.length).toBeGreaterThan(9);
     });
   });
 
@@ -58,16 +56,14 @@ describe('Dado que o usuário está na página de eventos', () => {
     );
     render(component);
 
-    act(async () => {
-      await waitFor(() => {
-        expect(eventServices.getNEvents).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(eventServices.getNEvents).toHaveBeenCalled();
 
-        const list = screen.getByAccessibilityHint('Lista de eventos vazia');
-        const { getByAccessibilityHint } = within(list);
-        const title = getByAccessibilityHint('Feedback');
+      const list = screen.getByAccessibilityHint('Lista de eventos vazia');
+      const { getByAccessibilityHint } = within(list);
+      const title = getByAccessibilityHint('Feedback');
 
-        expect(title.children[0]).toBe('Nenhum evento encontrado...');
-      });
+      expect(title.children[0]).toBe('Nenhum evento encontrado...');
     });
   });
 
@@ -81,22 +77,20 @@ describe('Dado que o usuário está na página de eventos', () => {
     );
     render(component);
 
-    act(async () => {
-      await waitFor(() => {
-        expect(eventServices.getNEvents).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(eventServices.getNEvents).toHaveBeenCalled();
 
-        const list = screen.getByAccessibilityHint('Lista de eventos');
-        const { getAllByAccessibilityHint } = within(list);
-        const items = getAllByAccessibilityHint('Evento');
+      const list = screen.getByAccessibilityHint('Lista de eventos');
+      const { getAllByAccessibilityHint } = within(list);
+      const items = getAllByAccessibilityHint('Evento');
 
-        const title = items[0].find(el => el.props.testID === 'titulo').props
-          .children;
+      const title = items[0].find(el => el.props.testID === 'titulo').props
+        .children;
 
-        fireEvent(items[0], 'press');
-        const newHeader = screen.getByAccessibilityHint('Título do evento');
+      fireEvent(items[0], 'press');
+      const newHeader = screen.getByAccessibilityHint('Título do evento');
 
-        expect(newHeader.children[0]).toBe(title);
-      });
+      expect(newHeader.children[0]).toBe(title);
     });
   });
 
@@ -110,16 +104,14 @@ describe('Dado que o usuário está na página de eventos', () => {
     );
     render(component);
 
-    act(async () => {
-      await waitFor(() => {
-        expect(eventServices.getNEvents).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(eventServices.getNEvents).toHaveBeenCalled();
 
-        const list = screen.getByAccessibilityHint('Lista de filtros');
-        const { getAllByAccessibilityHint } = within(list);
-        const items = getAllByAccessibilityHint('Filtro');
+      const list = screen.getByAccessibilityHint('Lista de filtros');
+      const { getAllByAccessibilityHint } = within(list);
+      const items = getAllByAccessibilityHint('Filtro');
 
-        expect(items.length).toBeGreaterThan(1);
-      });
+      expect(items.length).toBeGreaterThan(1);
     });
   });
 
@@ -133,33 +125,31 @@ describe('Dado que o usuário está na página de eventos', () => {
     );
     const { getByAccessibilityHint } = render(component);
 
-    act(async () => {
-      await waitFor(() => {
-        expect(eventServices.getNEvents).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(eventServices.getNEvents).toHaveBeenCalled();
 
-        const list = getByAccessibilityHint('Lista de filtros');
-        const { getAllByAccessibilityHint } = within(list);
-        const items = getAllByAccessibilityHint('Filtro');
+      const list = getByAccessibilityHint('Lista de filtros');
+      const { getAllByAccessibilityHint } = within(list);
+      const items = getAllByAccessibilityHint('Filtro');
 
-        expect(items.length).toBeGreaterThan(1);
+      expect(items.length).toBeGreaterThan(1);
 
-        const botao = getByAccessibilityHint('Botão de filtro');
+      const botao = getByAccessibilityHint('Botão de filtro');
 
-        const filtro = items[0].find(el => el.props.testID === 'filtro').props
-          .accessibilityHint;
-        fireEvent(items[0], 'press');
-        fireEvent(botao, 'press');
+      const filtro = items[0].find(el => el.props.testID === 'filtro').props
+        .accessibilityHint;
+      fireEvent(items[0], 'press');
+      fireEvent(botao, 'press');
 
-        const listEvents = getByAccessibilityHint('Lista de eventos');
-        const { getAllByAccessibilityHint: getAllByHint } = within(listEvents);
-        const itemsEvents = getAllByHint('Evento');
+      const listEvents = getByAccessibilityHint('Lista de eventos');
+      const { getAllByAccessibilityHint: getAllByHint } = within(listEvents);
+      const itemsEvents = getAllByHint('Evento');
 
-        expect(
-          itemsEvents.every(el => {
-            return el.props.testID === filtro;
-          }),
-        ).toBeTruthy();
-      });
+      expect(
+        itemsEvents.every(el => {
+          return el.props.testID === filtro;
+        }),
+      ).toBeTruthy();
     });
   });
 });

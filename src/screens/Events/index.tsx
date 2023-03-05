@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import ListEvents from './ListEvents';
-import { Footer, Header } from '../../styles/GlobalComponents';
+import { Footer, Header } from '@global';
 import { ContentContainer } from './styles';
 import Aside from './Aside';
 

@@ -9,7 +9,7 @@ import Features from '../../src/screens/Features';
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 
 describe('Dado que o usuário está na página de funcionalidades', () => {
-  it('Deve exibir uma lista de no mínimo 4 funcionalidades', () => {
+  it('Deve exibir uma lista de no mínimo 2 funcionalidades', () => {
     const component = (
       <NavigationContainer>
         <Features
@@ -35,7 +35,7 @@ describe('Dado que o usuário está na página de funcionalidades', () => {
     const { getAllByAccessibilityHint } = within(list);
     const items = getAllByAccessibilityHint('Funcionalidade');
 
-    expect(items.length).toBeGreaterThanOrEqual(4);
+    expect(items.length).toBeGreaterThanOrEqual(2);
   });
 
   it('Ao clicar em uma funcionalidade, deve ser redirecionado para a página da funcionalidade', () => {
