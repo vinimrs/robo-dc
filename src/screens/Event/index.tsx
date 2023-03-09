@@ -1,3 +1,5 @@
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 import { imagesSrc } from '@constants';
 import { Footer, Header } from '@global';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -24,6 +26,14 @@ const Event: React.FC<EventScreenProps> = ({ route }) => {
 
   const handleDate = (date: string) => {
     const dateFormated = new Date(date);
+    console.log(
+      `${dateFormated.toLocaleDateString(
+        'en-US',
+      )} - ${dateFormated.toLocaleTimeString('en-US')}`,
+      `${dateFormated.toLocaleDateString(
+        'pt-BR',
+      )} - ${dateFormated.toLocaleTimeString('pt-BR')}`,
+    );
     return `${dateFormated.toLocaleDateString(
       'pt-BR',
     )} - ${dateFormated.toLocaleTimeString('pt-BR')}`;
