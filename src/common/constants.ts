@@ -6,7 +6,7 @@ export const imagesSrc = {
   student: require('../assets/images/student.png'),
   guest: require('../assets/images/guest.png'),
   arrow: require('../assets/images/arrow.png'),
-  calendar: require('../assets/images/guest.png'),
+  calendar: require('../assets/images/calendar.png'),
   // listArrow: require('../assets/images/list-arrow.png'),
   location: require('../assets/images/location.png'),
   moreTime: require('../assets/images/moretime.png'),

@@ -4,11 +4,10 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   width: 358px;
   height: 100%;
-  padding-top: 106px;
-  padding-bottom: 36px;
+  padding-bottom: 42px;
   padding-left: 24px;
   padding-right: 24px;
-  align-items: flex-start;
+  justify-content: flex-end;
 `;
 
 export const Divider = styled.View`
@@ -21,7 +20,7 @@ export const Divider = styled.View`
 
 export const TextContainer = styled.View`
   padding-top: 16px;
-  padding-bottom: 16px;
+  padding-bottom: 12px;
   border-radius: 8px;
   width: 100%;
   align-items: center;
