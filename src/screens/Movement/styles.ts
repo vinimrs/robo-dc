@@ -33,6 +33,7 @@ export const Button = styled.TouchableOpacity<{ positive?: boolean }>`
   padding: 12px 80px;
   border-radius: 12px;
   background-color: ${props => (props.positive ? '#00BFA6' : '#FF5C5C')};
+  border: 5px solid ${props => (props.positive ? '#00BFA6' : '#FF5C5C')};
 `;
 
 export const ButtonText = styled.Text`

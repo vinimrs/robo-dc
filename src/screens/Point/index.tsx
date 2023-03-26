@@ -1,3 +1,4 @@
+import { imagesSrc } from '@constants';
 import { Footer, Header } from '@global';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -11,6 +12,7 @@ import { StackParamsList } from '../../rotes/AppRotes';
 import {
   Button,
   ButtonContainer,
+  ButtonIcon,
   ButtonText,
   Container,
   InfoContainer,
@@ -34,7 +36,7 @@ const Point: React.FC<PointScreenProps> = ({ route }) => {
   };
 
   return (
-    <Layout Header={() => <Header title={params.point.name} />} Footer={Footer}>
+    <Layout Header={() => <Header title={params.point.type} />} Footer={Footer}>
       <ScrollContainer>
         <Container>
           <View>
@@ -53,7 +55,8 @@ const Point: React.FC<PointScreenProps> = ({ route }) => {
           <Button
             onPress={handlePress}
             accessibilityHint="Botão de ir para o local">
-            <ButtonText>Ir para o local</ButtonText>
+            <ButtonText>Me leve para o local</ButtonText>
+            <ButtonIcon source={imagesSrc.arrow} />
           </Button>
         </ButtonContainer>
       </ScrollContainer>

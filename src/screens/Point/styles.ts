@@ -1,4 +1,3 @@
-import { blackIdentityText } from '../../styles/colors';
 import styled from 'styled-components/native';
 
 export const ScrollContainer = styled.ScrollView`
@@ -8,8 +7,6 @@ export const ScrollContainer = styled.ScrollView`
 
 export const Container = styled.View`
   width: 876px;
-  /* height: 80%; */
-  justify-content: space-around;
   flex-direction: row;
   margin-top: 24px;
 `;
@@ -21,23 +18,27 @@ export const PointImage = styled.Image`
 `;
 
 export const InfoContainer = styled.View`
-  width: 380px;
+  width: 456px;
   align-items: flex-start;
+  margin-left: 32px;
 `;
 
 export const PointTitle = styled.Text`
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
   padding-right: 8px;
+  margin-top: -8px;
   font-family: 'Inter-Bold';
 `;
 
 export const PointDescription = styled.Text`
-  font-size: 16px;
-  font-family: 'Inter-Regular';
+  font-size: 20px;
+  font-family: 'Inter-Medium';
   margin-top: 12px;
-  max-width: 400px;
+  min-width: 100%;
+  line-height: 30px;
   text-align: justify;
+  color: '#000000';
 `;
 
 export const PointDescriptionPrefix = styled.Text`
@@ -70,22 +71,29 @@ export const ButtonContainer = styled.View`
   justify-content: center;
   align-items: flex-end;
   margin: 24px 0;
-  padding: 0 52px;
+  padding: 0 0px;
 `;
 
 export const Button = styled.TouchableOpacity`
-  padding: 5px 22px;
-  background-color: #f5f5f5;
-  border: 5px solid #6be8e6;
+  padding: 10px 23px;
+  background-color: #6be8e6;
   border-radius: 20px;
   box-sizing: border-box;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
 `;
 
 export const ButtonText = styled.Text`
   font-family: 'Inter-Bold';
   font-size: 20px;
   line-height: 30px;
-  color: ${blackIdentityText};
+  color: #000000;
+  margin-right: 16px;
+`;
+
+export const ButtonIcon = styled.Image`
+  width: 31px;
+  height: 21px;
+  transform: rotate(180deg);
 `;

@@ -4,7 +4,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import AppRotes, { StackParamsList } from '../../src/rotes/AppRotes';
 import {
   render,
-  within,
   screen,
   fireEvent,
   waitFor,
@@ -20,6 +19,8 @@ jest.mock('../../src/services/robotServices', () => {
   return {
     robotServices: {
       moveTo: jest.fn(),
+      cancelMove: jest.fn(),
+      getStatus: jest.fn(),
     },
   };
 });
@@ -27,6 +28,19 @@ jest.mock('../../src/services/robotServices', () => {
 const mockReturn = {
   ok: true,
   message: 'Deu certo',
+};
+
+const mockReturnCancel = {
+  ok: true,
+  message: 'Mensagem de cancelamento enviada',
+};
+
+const mockReturnStatus = {
+  ok: true,
+  message: 'Mensagem de status',
+  body: {
+    goal_state: 'SUCCEEDED',
+  },
 };
 
 describe('Dado que o usuário está na página de explorar o DC', () => {
@@ -37,11 +51,11 @@ describe('Dado que o usuário está na página de explorar o DC', () => {
       </NavigationContainer>
     );
 
-    const { getByAccessibilityHint } = render(component);
+    const { getAllByAccessibilityHint } = render(component);
 
-    const list = getByAccessibilityHint('Lista de pontos do DC');
-    const { getAllByAccessibilityHint } = within(list);
     const items = getAllByAccessibilityHint('Ponto do DC');
+    // const { getAllByAccessibilityHint } = within(list);
+    // const items = getAllByAccessibilityHint('Ponto do DC');
 
     expect(items.length).toBeGreaterThanOrEqual(3);
   });
@@ -52,14 +66,15 @@ describe('Dado que o usuário está na página de explorar o DC', () => {
         <AppRotes initialScreen="Explore" />
       </NavigationContainer>
     );
-    const { getByAccessibilityHint } = render(component);
+    const { getAllByAccessibilityHint } = render(component);
 
-    const list = getByAccessibilityHint('Lista de pontos do DC');
-    const { getAllByAccessibilityHint } = within(list);
+    // const list = getByAccessibilityHint('Lista de pontos do DC');
+    // const { getAllByAccessibilityHint } = within(list);
     const items = getAllByAccessibilityHint('Ponto do DC');
 
-    const title = items[0].find(el => el.props.testID === 'titulo').props
-      .children;
+    // const title = items[0].find(el => el.props.testID === 'titulo').props
+    //   .children;
+    const title = items[0].props.testID;
 
     fireEvent(items[0], 'press');
     const newHeader = screen.getByAccessibilityHint('Nome do ponto do DC');
@@ -175,5 +190,86 @@ describe('Dado que o usuário está na página de movimentação', () => {
 
       expect(newHeader.children[0]).toBe(`Indo para o ${points[0].name}.`);
     });
+  });
+});
+
+describe('Dado que o usuário está na página de estado em movimento', () => {
+  it('Ao clicar no botão "Cancelar o passeio" o robô para de andar e o sistema irá retornar a página anterior', async () => {
+    (robotServices.moveTo as jest.Mock).mockReturnValue(mockReturn);
+    (robotServices.cancelMove as jest.Mock).mockReturnValue(mockReturnCancel);
+
+    const component = (
+      <NavigationContainer>
+        <AppRotes initialScreen="Movement" />
+      </NavigationContainer>
+    );
+    const { getByAccessibilityHint } = render(component);
+
+    const button = getByAccessibilityHint('Botão de confirmação de destino');
+
+    await waitFor(() => {
+      fireEvent(button, 'press');
+      expect(robotServices.moveTo).toHaveBeenCalled();
+
+      const newHeader = getByAccessibilityHint('Feedback de movimentação');
+
+      expect(newHeader.children[0]).toBe(`Indo para o ${points[0].name}.`);
+
+      const cancelButton = getByAccessibilityHint(
+        'Botão de cancelamento de passeio',
+      );
+
+      fireEvent(cancelButton, 'press');
+      expect(robotServices.cancelMove).toHaveBeenCalled();
+
+      const feedback = getByAccessibilityHint('Feedback para começar');
+
+      expect(feedback.children[0]).toBe(
+        `Irei te acompanhar até o ${points[0].name}!`,
+      );
+    });
+  });
+
+  it('Ao chegar ao destino, deve indicar ao usuário', async () => {
+    (robotServices.getStatus as jest.Mock).mockReturnValue(mockReturnStatus);
+
+    const component = (
+      <NavigationContainer>
+        <AppRotes initialScreen="Moving" />
+      </NavigationContainer>
+    );
+    const { getByAccessibilityHint } = render(component);
+
+    await waitFor(() => {
+      expect(robotServices.getStatus).toHaveBeenCalled();
+
+      const newHeader = getByAccessibilityHint('Feedback do destino');
+
+      expect(newHeader.children[0]).toBe(
+        `Consegue visualizar o(s) ${points[0].name}?`,
+      );
+    });
+  });
+});
+
+describe('Dado que o usuário está na página de estado de chegou no destino', () => {
+  it('Ao clicar no botão "Estou vendo!", deve ser direcionado para a página de Explorar.', async () => {
+    // (robotServices.getStatus as jest.Mock).mockReturnValue(mockReturnStatus);
+
+    const component = (
+      <NavigationContainer>
+        <AppRotes initialScreen="Arrived" />
+      </NavigationContainer>
+    );
+    const { getByAccessibilityHint, getAllByAccessibilityHint } =
+      render(component);
+
+    const button = getByAccessibilityHint('Botão de confirmação de destino');
+
+    fireEvent(button, 'press');
+
+    const items = getAllByAccessibilityHint('Ponto do DC');
+
+    expect(items.length).toBeGreaterThanOrEqual(3);
   });
 });

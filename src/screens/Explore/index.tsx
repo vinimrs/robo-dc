@@ -1,7 +1,8 @@
 import { Footer, Header } from '@global';
 import React from 'react';
 import Layout from '../../components/Layout';
-import ListPoints from './ListPoints';
+import Aside from './Aside';
+import Map from './Map';
 import { ContentContainer } from './styles';
 
 // import { Container } from './styles';
@@ -13,7 +14,8 @@ const Explore: React.FC = () => {
       Footer={Footer}
       larger={true}>
       <ContentContainer>
-        <ListPoints />
+        <Aside />
+        <Map />
       </ContentContainer>
     </Layout>
   );

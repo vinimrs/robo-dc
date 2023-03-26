@@ -10,6 +10,7 @@ import Point from '../screens/Point';
 import Movement from '../screens/Movement';
 import { points } from '@constants';
 import Moving from '../screens/Movement/Moving';
+import Arrived from '../screens/Movement/Arrived';
 
 export type StackParamsList = {
   Home: undefined;
@@ -20,6 +21,7 @@ export type StackParamsList = {
   Point: { point: PointI } | undefined;
   Movement: { point: PointI } | undefined;
   Moving: { point: PointI } | undefined;
+  Arrived: { point: PointI } | undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParamsList>();
@@ -49,6 +51,11 @@ const AppRotes: React.FC<{
       <Stack.Screen
         name="Moving"
         component={Moving}
+        initialParams={{ point: points[0] }}
+      />
+      <Stack.Screen
+        name="Arrived"
+        component={Arrived}
         initialParams={{ point: points[0] }}
       />
     </Stack.Navigator>

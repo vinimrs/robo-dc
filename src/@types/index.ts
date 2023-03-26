@@ -33,7 +33,8 @@ export type Routes =
   | 'Explore'
   | 'Point'
   | 'Movement'
-  | 'Moving';
+  | 'Moving'
+  | 'Arrived';
 
 export type Points =
   | 'LE-1'
@@ -44,14 +45,14 @@ export type Points =
   | 'PPG-CC4'
   | 'Maker'
   | 'LE-5'
-  | 'Auditorio'
+  | 'Auditório'
   | 'Banheiros'
   | 'Copa'
   | 'Lig'
-  | 'Reunioes'
+  | 'Reuniões'
   | 'Chefia'
-  | 'Graduacao'
-  | 'Recepcao'
+  | 'Graduação'
+  | 'Recepção'
   | 'Home';
 
 export interface PointI {
@@ -59,5 +60,6 @@ export interface PointI {
   name: Points;
   slug: string;
   description: string;
+  type?: string;
   image: ImageSourcePropType;
 }
