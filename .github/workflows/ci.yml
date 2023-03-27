@@ -18,7 +18,7 @@ jobs:
         run: npm i --force
       - name: Create a env file
         run: |
-          echo ${{ secrets.ENV_FILE }} > .env
+          echo "${{ secrets.ENV_FILE }}" > .env
       - name: Run check
         run: npm run test
   linter:
