@@ -1,64 +1,41 @@
 import { filters } from '@constants';
 import React from 'react';
 import { TextContainer } from '../styles';
-import {
-  FilterButton,
-  FilterContainer,
-  FilterList,
-  FilterText,
-  FilterTitle,
-} from './styles';
+import { FilterContainer, FilterList, FilterText, FilterTitle } from './styles';
 
 const Content: React.FC<{
   setFilter: React.Dispatch<React.SetStateAction<string[]>>;
-}> = ({ setFilter }) => {
-  const [selectedFilters, setSelectedFilters] = React.useState<string[]>([]);
-  const [isFiltered, setIsFiltered] = React.useState<boolean>(false);
-
+  filter: string[];
+}> = ({ setFilter, filter }) => {
   const handleFilter = (newFilter: string) => {
-    if (!selectedFilters.includes(newFilter)) {
-      setSelectedFilters(sel => [...sel, newFilter]);
-    } else if (!isFiltered) {
-      setSelectedFilters(sel => sel.filter(filter => filter !== newFilter));
+    if (!filter?.includes(newFilter)) {
+      if (!filter) {
+        setFilter([newFilter]);
+      }
+      setFilter(sel => [...sel, newFilter]);
+    } else {
+      if (filter) {
+        setFilter(sel => sel.filter(fi => fi !== newFilter));
+      }
     }
   };
 
-  const handleApplyFilter = () => {
-    if (selectedFilters.length > 0 && !isFiltered) {
-      setFilter(selectedFilters);
-      setIsFiltered(true);
-    } else {
-      setSelectedFilters([]);
-      setFilter(undefined);
-      setIsFiltered(false);
-    }
-  };
   return (
     <TextContainer>
       <FilterTitle>POR CATEGORIA</FilterTitle>
       <FilterList accessibilityHint="Lista de filtros">
-        {filters.map(filter => (
+        {filters.map(filt => (
           <FilterContainer
-            key={filter.id}
+            key={filt.id}
             accessibilityHint="Filtro"
-            onPress={() => handleFilter(filter.slug)}
-            selected={selectedFilters.includes(filter.slug)}
-            disabled={isFiltered}>
-            <FilterText testID="filtro" accessibilityHint={filter.slug}>
-              {filter.name}
+            onPress={() => handleFilter(filt.slug)}
+            selected={filter?.includes(filt.slug)}>
+            <FilterText testID="filtro" accessibilityHint={filt.slug}>
+              {filt.name}
             </FilterText>
           </FilterContainer>
         ))}
       </FilterList>
-      <FilterButton
-        accessibilityHint="Botão de filtro"
-        onPress={handleApplyFilter}>
-        {isFiltered ? (
-          <FilterText>Limpar</FilterText>
-        ) : (
-          <FilterText>Aplicar</FilterText>
-        )}
-      </FilterButton>
     </TextContainer>
   );
 };

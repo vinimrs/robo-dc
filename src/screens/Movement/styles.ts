@@ -30,10 +30,9 @@ export const Button = styled.TouchableOpacity<{ positive?: boolean }>`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px 80px;
+  padding: 16px 82px;
   border-radius: 12px;
   background-color: ${props => (props.positive ? '#00BFA6' : '#FF5C5C')};
-  border: 5px solid ${props => (props.positive ? '#00BFA6' : '#FF5C5C')};
 `;
 
 export const ButtonText = styled.Text`

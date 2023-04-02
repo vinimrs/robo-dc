@@ -18,6 +18,8 @@ export const imagesSrc = {
     le1: require('../assets/images/dc.jpeg'),
   },
   mapa: require('../assets/images/mapa-terreo-dc.jpg'),
+  explore: require('../assets/images/explore.png'),
+  event: require('../assets/images/event.png'),
 };
 
 export const filters = [
@@ -85,8 +87,7 @@ export const points: PointI[] = [
     name: 'Suporte',
     slug: 'suporte',
     type: 'Técnico',
-    description:
-      'Neste local você pode encontrar o suporte técnico do DC. (corrigir)',
+    description: 'Neste local você pode encontrar o suporte técnico do DC.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -94,7 +95,7 @@ export const points: PointI[] = [
     name: 'PPG-CC4',
     type: 'Laboratório',
     slug: 'ppgcc4',
-    description: 'Neste local você pode encontrar o PPG-CC4. (corrigir)',
+    description: 'Neste local você pode encontrar o PPG-CC4.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -102,7 +103,7 @@ export const points: PointI[] = [
     name: 'Maker',
     slug: 'maker',
     type: 'Laboratório',
-    description: 'Neste local você pode encontrar o Espaço Maker. (corrigir)',
+    description: 'Neste local você pode encontrar o Espaço Maker.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -119,7 +120,7 @@ export const points: PointI[] = [
     name: 'Auditório',
     slug: 'auditorio',
     type: 'Auditório',
-    description: 'Neste local você pode encontrar o Auditório. (corrigir)',
+    description: 'Neste local você pode encontrar o Auditório.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -127,7 +128,7 @@ export const points: PointI[] = [
     name: 'Banheiros',
     slug: 'banheiros',
     type: 'Serviços',
-    description: 'Neste local você pode encontrar os Banheiros. (corrigir)',
+    description: 'Neste local você pode encontrar os Banheiros.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -135,7 +136,7 @@ export const points: PointI[] = [
     name: 'Copa',
     slug: 'copa',
     type: 'Serviços',
-    description: 'Neste local você pode encontrar a Copa. (corrigir)',
+    description: 'Neste local você pode encontrar a Copa.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -143,7 +144,7 @@ export const points: PointI[] = [
     name: 'Lig',
     slug: 'lig',
     type: 'Lig',
-    description: 'Neste local você pode encontrar o LIG. (corrigir)',
+    description: 'Neste local você pode encontrar o LIG.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -151,8 +152,7 @@ export const points: PointI[] = [
     name: 'Reuniões',
     slug: 'reunioes',
     type: 'Reunião',
-    description:
-      'Neste local você pode encontrar o Espaço para Reuniões. (corrigir)',
+    description: 'Neste local você pode encontrar o Espaço para Reuniões.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -160,7 +160,7 @@ export const points: PointI[] = [
     name: 'Chefia',
     slug: 'chefia',
     type: 'Chefia',
-    description: 'Neste local você pode encontrar a Chefia. (corrigir)',
+    description: 'Neste local você pode encontrar a Chefia.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -168,8 +168,7 @@ export const points: PointI[] = [
     name: 'Graduação',
     slug: 'graduacao',
     type: 'Graduação',
-    description:
-      'Neste local você pode encontrar o Espaço para Graduação. (corrigir)',
+    description: 'Neste local você pode encontrar o Espaço para Graduação.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -177,7 +176,7 @@ export const points: PointI[] = [
     name: 'Recepção',
     slug: 'recepcao',
     type: 'Recepção',
-    description: 'Neste local você pode encontrar a Recepção. (corrigir)',
+    description: 'Neste local você pode encontrar a Recepção.',
     image: imagesSrc.dcPoints.le1,
   },
   {
@@ -185,8 +184,7 @@ export const points: PointI[] = [
     name: 'Home',
     slug: 'home',
     type: 'Home',
-    description:
-      'Neste local você pode encontrar o salão principal do DC. (corrigir)',
+    description: 'Neste local você pode encontrar o salão principal do DC.',
     image: imagesSrc.dcPoints.le1,
   },
 ];
@@ -215,3 +213,58 @@ export const ros_comm_state = {
   7: 'DONE',
   8: 'LOST',
 };
+
+export const pointsMapped = [
+  {
+    point: points[0],
+    position: { top: 40, left: 30 },
+  },
+  {
+    point: points[1],
+    position: { top: 40, left: 130 },
+  },
+  {
+    point: points[2],
+    position: { top: 40, left: 230 },
+  },
+  {
+    point: points[3],
+    position: { top: 40, left: 330 },
+  },
+  {
+    point: points[4],
+    position: { top: 90, left: 430 },
+  },
+  {
+    point: points[5],
+    position: { top: 40, left: 510 },
+  },
+  {
+    point: points[6],
+    position: { top: 40, left: 610 },
+  },
+  {
+    point: points[7],
+    position: { top: 40, left: 730 },
+  },
+  {
+    point: points[8],
+    position: { top: 100, left: 805 },
+  },
+  {
+    point: points[9],
+    position: { top: 165, left: 40 },
+  },
+  {
+    point: points[10],
+    position: { top: 235, left: 40 },
+  },
+  {
+    point: points[11],
+    position: { top: 305, left: 35 },
+  },
+  {
+    point: points[15],
+    position: { top: 360, left: 520 },
+  },
+];

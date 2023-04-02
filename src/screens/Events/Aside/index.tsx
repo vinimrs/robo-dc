@@ -6,12 +6,13 @@ import { Container, Divider } from './styles';
 
 const Aside: React.FC<{
   setFilter: React.Dispatch<React.SetStateAction<string[]>>;
-}> = ({ setFilter }) => {
+  filter: string[];
+}> = ({ setFilter, filter }) => {
   return (
     <Container>
       <Header />
       <Divider />
-      <Content setFilter={setFilter} />
+      <Content setFilter={setFilter} filter={filter} />
     </Container>
   );
 };

@@ -1,9 +1,16 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 
-export const style = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-});
+export const Container = styled.View`
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+export const ListContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;

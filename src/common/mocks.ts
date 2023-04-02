@@ -1,3 +1,4 @@
+import { ImageSourcePropType } from 'react-native';
 import { imagesSrc } from './constants';
 
 export const mockEvents = [
@@ -147,11 +148,12 @@ export const mockFeatures: {
   name: string;
   id: string;
   route: 'Events' | 'Explore';
+  src: ImageSourcePropType;
 }[] = [
   // { name: 'Mapa do DC', route: 'Map', id: '1' },
   // { name: 'Passeio', route: 'Tour', id: '2' },
-  { name: 'Eventos', route: 'Events', id: '3' },
-  { name: 'Explorar', route: 'Explore', id: '4' },
+  { name: 'Eventos', route: 'Events', id: '3', src: imagesSrc.event },
+  { name: 'Explorar', route: 'Explore', id: '4', src: imagesSrc.explore },
   // { name: 'Curiosidades', route: 'Curiosity', id: '4' },
 ];
 

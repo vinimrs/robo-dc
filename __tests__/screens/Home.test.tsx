@@ -1,4 +1,4 @@
-import { fireEvent, render, within } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 import * as React from 'react';
 import Home from '../../src/screens/Home';
 
@@ -20,10 +20,10 @@ describe('Dado que o usuário está na página inicial', () => {
       </NavigationContainer>
     );
 
-    const { getByAccessibilityHint } = render(component);
+    const { getAllByAccessibilityHint } = render(component);
 
-    const list = getByAccessibilityHint('Lista de usuários');
-    const { getAllByAccessibilityHint } = within(list);
+    // const list = getByAccessibilityHint('Lista de usuários');
+    // const { getAllByAccessibilityHint } = within(list);
     const items = getAllByAccessibilityHint('Usuário');
 
     expect(items.length).toBe(3);

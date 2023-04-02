@@ -6,14 +6,14 @@ import { ContentContainer } from './styles';
 import Aside from './Aside';
 
 const Events: React.FC = () => {
-  const [filter, setFilter] = React.useState<string[] | undefined>(undefined);
+  const [filter, setFilter] = React.useState<string[]>([]);
 
   return (
     <Layout
       Header={() => <Header larger={true} title="Eventos do DC" />}
       Footer={Footer}
       larger={true}>
-      <Aside setFilter={setFilter} />
+      <Aside setFilter={setFilter} filter={filter} />
       <ContentContainer>
         <ListEvents filter={filter} />
       </ContentContainer>

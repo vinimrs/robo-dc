@@ -1,25 +1,22 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { ImageSourcePropType } from 'react-native';
 import { StackParamsList } from '../../../rotes/AppRotes';
 import ListItem from '../ListItem';
-import { style } from './styles';
+import { Container, ListContainer } from './styles';
 
 const List: React.FC<{
   accessibilityHintList: string;
   accessibilityHintItem: string;
-  data: { name: string; src: string; id: string }[];
+  data: { name: string; src: ImageSourcePropType; id: string }[];
   navigation: NativeStackNavigationProp<StackParamsList>;
 }> = ({ accessibilityHintList, accessibilityHintItem, data, navigation }) => {
   return (
-    <View>
-      <FlatList
-        contentContainerStyle={style.container}
-        accessibilityHint={accessibilityHintList}
-        data={data}
-        keyExtractor={item => String(item.id)}
-        renderItem={({ item }) => (
+    <Container>
+      <ListContainer accessibilityHint={accessibilityHintList}>
+        {[data[0], data[1]].map((item, index) => (
           <ListItem
+            key={item.id}
             accessibilityHint={accessibilityHintItem}
             title={item.name}
             src={item.src}
@@ -27,11 +24,24 @@ const List: React.FC<{
               navigation.navigate('Features', { userRole: item.name });
             }}
             largeSpacing={true}
+            last={index === 1}
           />
-        )}
-        numColumns={2}
-      />
-    </View>
+        ))}
+      </ListContainer>
+      {[data[2]].map(item => (
+        <ListItem
+          key={item.id}
+          accessibilityHint={accessibilityHintItem}
+          title={item.name}
+          src={item.src}
+          onPress={() => {
+            navigation.navigate('Features', { userRole: item.name });
+          }}
+          largeSpacing={true}
+          last={true}
+        />
+      ))}
+    </Container>
   );
 };
 

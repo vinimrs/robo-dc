@@ -149,7 +149,7 @@ describe('Dado que o usuário está na página de movimentação', () => {
     );
   });
 
-  it('Deve exibir um botão para voltar para a página de informações do ponto', async () => {
+  it('Deve exibir um botão de cancelar passeio', async () => {
     const component = (
       <NavigationContainer>
         <AppRotes initialScreen="Point" />
@@ -161,7 +161,7 @@ describe('Dado que o usuário está na página de movimentação', () => {
 
     fireEvent(pointButton, 'press');
 
-    const button = getByAccessibilityHint('Botão de voltar para o ponto');
+    const button = getByAccessibilityHint('Botão de cancelar passeio');
 
     fireEvent(button, 'press');
 
@@ -194,7 +194,7 @@ describe('Dado que o usuário está na página de movimentação', () => {
 });
 
 describe('Dado que o usuário está na página de estado em movimento', () => {
-  it('Ao clicar no botão "Cancelar o passeio" o robô para de andar e o sistema irá retornar a página anterior', async () => {
+  it('Ao clicar no botão "Cancelar o passeio" o robô para de andar e o sistema irá para a página do ponto', async () => {
     (robotServices.moveTo as jest.Mock).mockReturnValue(mockReturn);
     (robotServices.cancelMove as jest.Mock).mockReturnValue(mockReturnCancel);
 
@@ -222,11 +222,13 @@ describe('Dado que o usuário está na página de estado em movimento', () => {
       fireEvent(cancelButton, 'press');
       expect(robotServices.cancelMove).toHaveBeenCalled();
 
-      const feedback = getByAccessibilityHint('Feedback para começar');
+      const newHeader2 = screen.getByAccessibilityHint('Nome do ponto do DC');
+      // const feedback = getByAccessibilityHint('Feedback para começar');
 
-      expect(feedback.children[0]).toBe(
-        `Irei te acompanhar até o ${points[0].name}!`,
-      );
+      // expect(feedback.children[0]).toBe(
+      //   `Irei te acompanhar até o ${points[0].name}!`,
+      // );
+      expect(newHeader2.children[0]).toBe(points[0].name);
     });
   });
 

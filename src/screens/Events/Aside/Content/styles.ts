@@ -8,13 +8,14 @@ export const FilterList = styled.View`
 `;
 
 export const FilterContainer = styled.TouchableOpacity<{ selected: boolean }>`
-  padding: 10px 50px;
+  padding: 8px 42px;
   border: 4px solid #ffffff;
+  border-radius: 8px;
   background-color: ${({ selected }) => (selected ? '#fff' : '#00000000')};
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 16px;
 `;
 
 export const FilterText = styled.Text`

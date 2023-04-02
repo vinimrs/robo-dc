@@ -26,8 +26,8 @@ export const ContainerFilter = styled.View`
 
 export const Title = styled.Text`
   font-size: 28px;
-  font-family: 'Inter-Bold';
-  font-weight: 700;
+  font-family: 'Inter-SemiBold';
+  font-weight: 600;
   color: ${blackIdentityText};
   margin-bottom: 4px;
 `;

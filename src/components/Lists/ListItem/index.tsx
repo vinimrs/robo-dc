@@ -1,19 +1,24 @@
 import React from 'react';
+import { ImageSourcePropType } from 'react-native';
 
 import { Body, Container, Header, Image, Title } from './styles';
 
 const ListItem: React.FC<{
-  src: any;
+  src: ImageSourcePropType;
   title: string;
-  accessibilityHint: string;
+  accessibilityHint?: string;
   onPress?: () => void;
   largeSpacing?: boolean;
-}> = ({ src, title, accessibilityHint, onPress, largeSpacing }) => {
+  key?: string;
+  last?: boolean;
+}> = ({ src, title, key, last, accessibilityHint, onPress, largeSpacing }) => {
   return (
     <Container
+      key={key}
       accessibilityHint={accessibilityHint}
       onPress={onPress}
-      largeSpacing={largeSpacing}>
+      largeSpacing={largeSpacing}
+      last={last}>
       <Header>
         <Image source={src} />
       </Header>

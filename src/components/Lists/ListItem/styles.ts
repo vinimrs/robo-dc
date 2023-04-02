@@ -1,12 +1,16 @@
 import styled from 'styled-components/native';
 import { blackIdentityText } from '../../../styles/colors';
 
-export const Container = styled.TouchableOpacity<{ largeSpacing?: boolean }>`
+export const Container = styled.TouchableOpacity<{
+  largeSpacing?: boolean;
+  last?: boolean;
+}>`
   width: 250px;
   height: 145px;
   background: rgba(8, 217, 214, 0.6);
   border-radius: 12px;
-  margin-left: ${({ largeSpacing }) => (largeSpacing ? '60px' : '36px')};
+  margin-right: ${({ largeSpacing, last }) =>
+    last ? '0px' : largeSpacing ? '80px' : '36px'};
   margin-top: 36px;
 `;
 

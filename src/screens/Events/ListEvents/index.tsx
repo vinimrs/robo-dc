@@ -10,13 +10,13 @@ import EmptyList from './EmptyList';
 import EventsItem from './EventsItem';
 import { style } from './styles';
 
-const ListEvents: React.FC<{ filter: string[] | undefined }> = ({ filter }) => {
+const ListEvents: React.FC<{ filter: string[] }> = ({ filter }) => {
   const [events, setEvents] = React.useState<EventI[]>([]);
   const navigation =
     useNavigation<NativeStackNavigationProp<StackParamsList>>();
 
   const filterEvents = (eventsArray: EventI[]) => {
-    if (filter) {
+    if (filter.length > 0) {
       return eventsArray.filter(event => {
         return filter.find(fil => fil === event.Slug) ? true : false;
       });

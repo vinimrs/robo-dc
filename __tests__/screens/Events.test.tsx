@@ -114,7 +114,7 @@ describe('Dado que o usuário está na página de eventos', () => {
     });
   });
 
-  it('E clicar em aplicar um filtro, logo após selecionar, deve ser listado os eventos filtrados', async () => {
+  it('E clica em um filtro, deve ser listado os eventos filtrados', async () => {
     (eventServices.getNEvents as jest.Mock).mockReturnValue(mockEvents);
 
     const component = (
@@ -133,12 +133,12 @@ describe('Dado que o usuário está na página de eventos', () => {
 
       expect(items.length).toBeGreaterThan(1);
 
-      const botao = getByAccessibilityHint('Botão de filtro');
+      // const botao = getByAccessibilityHint('Botão de filtro');
 
       const filtro = items[0].find(el => el.props.testID === 'filtro').props
         .accessibilityHint;
       fireEvent(items[0], 'press');
-      fireEvent(botao, 'press');
+      // fireEvent(botao, 'press');
 
       const listEvents = getByAccessibilityHint('Lista de eventos');
       const { getAllByAccessibilityHint: getAllByHint } = within(listEvents);

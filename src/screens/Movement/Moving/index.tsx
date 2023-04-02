@@ -20,7 +20,7 @@ const Moving: React.FC<MovingScreenProps> = ({ route }) => {
   const handleCancelMovement = async () => {
     const res = await robotServices.cancelMove();
     if (res.ok) {
-      navigation.goBack();
+      navigation.push('Point', { point: params.point });
     }
   };
 
@@ -35,7 +35,7 @@ const Moving: React.FC<MovingScreenProps> = ({ route }) => {
     verifyStatus();
     const interval = setInterval(verifyStatus, 5000);
 
-    return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+    return () => clearInterval(interval);
   }, [navigation, params.point]);
 
   return (

@@ -4,6 +4,7 @@ import {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 import React from 'react';
+import { ActivityIndicator } from 'react-native';
 import { StackParamsList } from '../../rotes/AppRotes';
 import { robotServices } from '../../services/robotServices';
 
@@ -19,14 +20,18 @@ import {
 type MovementScreenProps = NativeStackScreenProps<StackParamsList, 'Movement'>;
 
 const Movement: React.FC<MovementScreenProps> = ({ route }) => {
+  const [loading, setLoading] = React.useState(false);
+
   const params = route.params;
   const navigation =
     useNavigation<NativeStackNavigationProp<StackParamsList>>();
 
   const handleNavigateToMoving = async () => {
+    setLoading(true);
     const res = await robotServices.moveTo(params.point.name);
 
     if (res.ok) {
+      setLoading(false);
       navigation.navigate('Moving', { point: params.point });
     }
   };
@@ -41,15 +46,19 @@ const Movement: React.FC<MovementScreenProps> = ({ route }) => {
       <Subtitle>Podemos começar?</Subtitle>
       <ButtonContainer>
         <Button
-          accessibilityHint="Botão de voltar para o ponto"
+          accessibilityHint="Botão de cancelar passeio"
           onPress={handleNavigateBack}>
-          <ButtonText>Não</ButtonText>
+          <ButtonText>Cancelar</ButtonText>
         </Button>
         <Button
           positive={true}
           accessibilityHint="Botão de confirmação de destino"
           onPress={handleNavigateToMoving}>
-          <ButtonText>Sim</ButtonText>
+          {loading ? (
+            <ActivityIndicator size={30} color="#000" />
+          ) : (
+            <ButtonText>Sim</ButtonText>
+          )}
         </Button>
       </ButtonContainer>
     </Container>

@@ -4,10 +4,9 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   width: 358px;
   height: 100%;
-  padding-bottom: 42px;
-  padding-left: 24px;
-  padding-right: 24px;
-  justify-content: flex-end;
+  margin-top: 140px;
+  padding: 36px 24px;
+  justify-content: flex-start;
 `;
 
 export const Divider = styled.View`

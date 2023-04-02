@@ -6,12 +6,10 @@ import {
 } from '@react-navigation/native-stack';
 import React from 'react';
 import Layout from '../../components/Layout';
-import { mockFeatures, mockUsers } from '../../common/mocks';
+import { mockFeatures } from '../../common/mocks';
 import List from '../../components/Lists/FeaturesList';
 import { StackParamsList } from '../../rotes/AppRotes';
 import ContentTitle from './ContentTitle';
-
-// import { Container } from './styles';
 
 type FeaturesScreenProps = NativeStackScreenProps<StackParamsList, 'Features'>;
 
@@ -20,10 +18,7 @@ const Features: React.FC<FeaturesScreenProps> = ({ route }) => {
     useNavigation<NativeStackNavigationProp<StackParamsList>>();
   const params = route?.params || { userRole: 'Visitante' };
 
-  const data = mockFeatures.map(feature => ({
-    ...feature,
-    src: mockUsers.find(user => user.name === params.userRole).src,
-  }));
+  const data = mockFeatures;
 
   return (
     <Layout Header={() => <Header />} Footer={Footer}>
